@@ -14,6 +14,8 @@ $(function() {
         var gcodeViewModel = new GcodeViewModel(loginStateViewModel, settingsViewModel);
         var navigationViewModel = new NavigationViewModel(loginStateViewModel, appearanceViewModel, settingsViewModel, usersViewModel);
         var logViewModel = new LogViewModel(loginStateViewModel);
+        var customCommandsViewModel = new CustomCommandsViewModel(loginStateViewModel, settingsViewModel,terminalViewModel);
+
 
         var dataUpdater = new DataUpdater(
             loginStateViewModel,
@@ -25,7 +27,8 @@ $(function() {
             gcodeFilesViewModel,
             timelapseViewModel,
             gcodeViewModel,
-			logViewModel
+			logViewModel,
+            customCommandsViewModel
         );
         
         // work around a stupid iOS6 bug where ajax requests get cached and only work once, as described at
@@ -300,6 +303,8 @@ $(function() {
         ko.applyBindings(temperatureViewModel, document.getElementById("temp"));
         ko.applyBindings(controlViewModel, document.getElementById("control"));
         ko.applyBindings(terminalViewModel, document.getElementById("term"));
+        ko.applyBindings(customCommandsViewModel, document.getElementById("customCommands"));
+        
         var gcode = document.getElementById("gcode");
         if (gcode) {
             gcodeViewModel.initialize();

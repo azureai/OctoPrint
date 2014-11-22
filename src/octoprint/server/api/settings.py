@@ -85,6 +85,9 @@ def getSettings():
 		"temperature": {
 			"profiles": s.get(["temperature", "profiles"])
 		},
+		"custom": {
+        	"commands": s.get(["custom", "commands"])
+        },  
 		"system": {
 			"actions": s.get(["system", "actions"]),
 			"events": s.get(["system", "events"])
@@ -172,6 +175,9 @@ def setSettings():
 
 		if "temperature" in data.keys():
 			if "profiles" in data["temperature"].keys(): s.set(["temperature", "profiles"], data["temperature"]["profiles"])
+
+		if "custom" in data.keys():
+			if "commands" in data["custom"].keys(): s.set(["custom", "commands"], data["custom"]["commands"])
 
 		if "terminalFilters" in data.keys():
 			s.set(["terminalFilters"], data["terminalFilters"])

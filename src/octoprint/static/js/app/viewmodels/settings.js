@@ -121,10 +121,19 @@ function SettingsViewModel(loginStateViewModel, usersViewModel) {
     self.cura_config = ko.observable(undefined);
 
     self.temperature_profiles = ko.observableArray(undefined);
-
+    self.custom_commands = ko.observableArray(undefined);
     self.system_actions = ko.observableArray([]);
 
     self.terminalFilters = ko.observableArray([]);
+
+    self.addCustomCommand = function() {
+        self.custom_commands.push({name: "New", command: "command"});
+    };
+
+    self.removeCustomCommand = function(command) {
+        self.custom_commands.remove(command);
+    };
+
 
     self.addTemperatureProfile = function() {
         self.temperature_profiles.push({name: "New", extruder:0, bed:0});
@@ -234,7 +243,7 @@ function SettingsViewModel(loginStateViewModel, usersViewModel) {
         self.cura_config(response.cura.config);
 
         self.temperature_profiles(response.temperature.profiles);
-
+        self.custom_commands(response.custom.commands);
         self.system_actions(response.system.actions);
 
         self.terminalFilters(response.terminalFilters);
@@ -299,6 +308,9 @@ function SettingsViewModel(loginStateViewModel, usersViewModel) {
             "temperature": {
                 "profiles": self.temperature_profiles()
             },
+            "custom": {
+                "commands": self.custom_commands()
+            },  
             "system": {
                 "actions": self.system_actions()
             },

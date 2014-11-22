@@ -87,6 +87,13 @@ default_settings = {
 				{"name": "PLA", "extruder" : 180, "bed" : 60 }
 			]
 	},
+	"custom": {
+		"commands":
+			[
+				{"name": "btn1", "command" : 210,  },
+				{"name": "btn2", "command" : 180,  }
+			]
+	},
 	"printerParameters": {
 		"movementSpeed": {
 			"x": 6000,

@@ -93,7 +93,7 @@
         </div>
         <div class="container octoprint-container">
             <div class="row">
-                <div class="accordion span4">
+                <div class="accordion span3">
                     <div class="accordion-group" data-bind="visible: loginState.isUser" id="connection_accordion">
                         <div class="accordion-heading">
                             <a class="accordion-toggle" data-toggle="collapse" href="#connection"><i class="icon-signal"></i> Connection</a>
@@ -246,7 +246,7 @@
                     </div>
                 </div>
 
-                <div class="span8 tabbable">
+                <div class="span7 tabbable">
                     <ul class="nav nav-tabs" id="tabs">
                         <li class="active"><a href="#temp" data-toggle="tab">Temperature</a></li>
                         <li><a href="#control" data-toggle="tab">Control</a></li>
@@ -594,7 +594,15 @@
                         {% endif %}
                     </div>
                 </div>
+
+                <div class="span2" id="customCommands" >               
+                    <ul  data-bind="foreach: customCommands,visible: loginState.isAdmin" style="list-style-type: none;">
+                     <li style="margin-bottom:5px;"><button class="btn btn-block"   data-bind="text: name,click:  $parent.execCustomCommand"></button></li>
+                    </ul>
+                   
+                </div>
             </div>
+
             <div class="footer">
                 <ul class="pull-left muted">
                     <li><small>Version: <span class="version">{{ display_version }}</span></small></li>
@@ -650,7 +658,7 @@
         <script type="text/javascript" src="{{ url_for('static', filename='js/app/viewmodels/timelapse.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/app/viewmodels/users.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/app/viewmodels/log.js') }}"></script>
-
+        <script type="text/javascript" src="{{ url_for('static', filename='js/app/viewmodels/customcommands.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/app/dataupdater.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/app/helpers.js') }}"></script>
 
